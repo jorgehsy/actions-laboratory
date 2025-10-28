@@ -20,7 +20,7 @@ function App() {
     try {
       const currentUser = await getCurrentUser();
       setUser(currentUser);
-      
+
       // Get additional user info from tokens
       const session = await fetchAuthSession();
       if (session.tokens?.idToken) {
@@ -36,8 +36,20 @@ function App() {
 
   const handleSignIn = async () => {
     try {
-      // This will redirect to Cognito Hosted UI which includes your Microsoft Entra ID provider
-      await signInWithRedirect();
+      // Debug: Log the configuration
+      console.log('Environment variables:', {
+        userPoolId: process.env.REACT_APP_USER_POOL_ID,
+        clientId: process.env.REACT_APP_USER_POOL_CLIENT_ID,
+        domain: process.env.REACT_APP_COGNITO_DOMAIN,
+        redirectUrl: process.env.REACT_APP_REDIRECT_URL
+      });
+
+      // This will redirect to Cognito Hosted UI with Microsoft Entra ID provider
+      await signInWithRedirect({
+        provider: {
+          custom: process.env.REACT_APP_PROVIDER_NAME
+        }
+      });
     } catch (error) {
       console.error('Sign in error:', error);
     }
@@ -67,12 +79,12 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>AWS Cognito + Microsoft Entra ID Login Test</h1>
-        
+
         {!user ? (
           <div className="login-section">
             <h2>Please sign in</h2>
             <p>Click the button below to sign in with Microsoft Entra ID through AWS Cognito</p>
-            <button 
+            <button
               className="sign-in-button"
               onClick={handleSignIn}
             >
@@ -86,7 +98,7 @@ function App() {
               <h3>User Information:</h3>
               <p><strong>Username:</strong> {user.username}</p>
               <p><strong>User ID:</strong> {user.userId}</p>
-              
+
               {userInfo && (
                 <div className="token-info">
                   <h3>Token Information:</h3>
@@ -98,8 +110,8 @@ function App() {
                 </div>
               )}
             </div>
-            
-            <button 
+
+            <button
               className="sign-out-button"
               onClick={handleSignOut}
             >
