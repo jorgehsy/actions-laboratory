@@ -15,8 +15,8 @@
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  width: 90%;
+  max-width: 800px;
+  width: 95%;
 }
 
 .app-header h1 {
@@ -113,4 +113,40 @@
 
 .sign-out-button:hover {
   background-color: #c82333;
+}
+
+.tokens-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.token-container {
+  margin-bottom: 1.5rem;
+}
+
+.token-container h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.token-display {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  resize: vertical;
+  word-break: break-all;
+  color: #495057;
+}
+
+.token-display:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
