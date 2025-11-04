@@ -33,6 +33,19 @@ fi
 # Create .env file for React
 echo "🔧 Creating React .env configuration..."
 cat > react-app/.env << EOF
+# AWS Cognito Configuration
+REACT_APP_AWS_REGION=us-east-1
+REACT_APP_USER_POOL_ID=us-east-1_Ev1pOU5GI
+REACT_APP_USER_POOL_CLIENT_ID=60mbf6r522ejtidtl3qc4bp66
+REACT_APP_COGNITO_DOMAIN=core-auth-administrativo-dev.auth.us-east-1.amazoncognito.com
+REACT_APP_PROVIDER_NAME=MicrosoftEntraID
+
+# Custom Domain Configuration
+REACT_APP_REDIRECT_URL=https://panteon.dev:3000/auth/callback
+
+# Provider Configuration
+REACT_APP_PROVIDER_NAME=MicrosoftEntraID
+
 # Disable host check for Docker
 DANGEROUSLY_DISABLE_HOST_CHECK=true
 
