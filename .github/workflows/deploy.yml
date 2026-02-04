@@ -31,7 +31,5 @@ jobs:
     needs: approval-gate
     uses: ./.github/workflows/_reusable.yml
     with:
-      app_name: ${{ vars.APP_NAME }}
-      app_project: ${{ vars.APP_PROJECT }}
       environment: ${{ inputs.environment || 'production' }}
     secrets: inherit

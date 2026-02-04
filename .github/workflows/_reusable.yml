@@ -3,14 +3,6 @@ name: Reusable Deployment Workflow
 on:
   workflow_call:
     inputs:
-      app_name:
-        description: 'Application name'
-        required: true
-        type: string
-      app_project:
-        description: 'Application project'
-        required: true
-        type: string
       environment:
         description: 'Deployment environment'
         required: false
@@ -28,16 +20,16 @@ jobs:
       - name: Display deployment info
         run: |
           echo "Deploying application..."
-          echo "App Name: ${{ inputs.app_name }}"
-          echo "App Project: ${{ inputs.app_project }}"
+          echo "App Name: ${{ vars.APP_NAME }}"
+          echo "App Project: ${{ vars.APP_PROJECT }}"
           echo "Environment: ${{ inputs.environment }}"
           echo "API Key is set: ${{ secrets.APIKEY != '' }}"
 
       - name: Run deployment script
         env:
           API_KEY: ${{ secrets.APIKEY }}
-          APP_NAME: ${{ inputs.app_name }}
-          APP_PROJECT: ${{ inputs.app_project }}
+          APP_NAME: ${{ vars.APP_NAME }}
+          APP_PROJECT: ${{ vars.APP_PROJECT }}
         run: |
           echo "Running deployment with the following configuration:"
           echo "APP_NAME: $APP_NAME"
