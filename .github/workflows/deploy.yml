@@ -29,7 +29,7 @@ jobs:
   call-reusable-workflow:
     name: Deploy using reusable workflow
     needs: approval-gate
-    uses: ./.github/_reusable.yml
+    uses: ./.github/workflows/_reusable.yml
     with:
       app_name: ${{ vars.APP_NAME }}
       app_project: ${{ vars.APP_PROJECT }}
