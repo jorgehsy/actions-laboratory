@@ -28,3 +28,7 @@ yarn-error.log*
 # Amplify
 amplify/
 .amplifyrc
+/.idea/.gitignore
+/.idea/login-cognito-entraid-personal.iml
+/.idea/modules.xml
+/.idea/vcs.xml
